@@ -1,16 +1,13 @@
+import React from 'react';
+// import { Buttons } from './buttons/Buttons';
+import Statistics from './statistics/Statistics';
+
 export const App = () => {
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
+    <div>
+      <h1>Expresso Cafe Feedback</h1>
+
+      <Statistics />
     </div>
   );
 };
