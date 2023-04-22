@@ -1,84 +1,26 @@
-// import proptypes from 'proptypes';
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import React, { Component } from 'react';
-import FeedbackOptions from 'components/buttons/FeedbackOptions';
+const Statistics = ({ good, neutral, bad, total, positivePercentage }) => {
+  return (
+    <div>
+      <ul>
+        <li>Good: {good}</li>
+        <li>Neutral: {neutral}</li>
+        <li>Bad: {bad}</li>
+        <li>Total: {total}</li>
+        <li>Positive feedback: {positivePercentage}%</li>
+      </ul>
+    </div>
+  );
+};
 
-class Statistics extends Component {
-  state = {
-    good: 0,
-    neutral: 0,
-    bad: 0,
-  };
-
-  onButtonClick = type => {
-    this.setState(prevState => ({ [type]: prevState[type] + 1 }));
-  };
-
-  countTotalFeedback = () => {
-    const { good, neutral, bad } = this.state;
-    return good + neutral + bad;
-  };
-
-  countPositiveFeedbackPercentage = () => {
-    const { good } = this.state;
-    const total = this.countTotalFeedback();
-    return total > 0 ? Math.round((good / total) * 100) : 0;
-  };
-
-  render() {
-    const { good, neutral, bad } = this.state;
-    const total = this.countTotalFeedback();
-    const positivePercentage = this.countPositiveFeedbackPercentage();
-
-    return (
-      <div>
-        <h1>Expresso Cafe Feedback</h1>
-
-        <FeedbackOptions onLeaveFeedback={this.onButtonClick} />
-
-        {/* <div>
-          
-          <ul>
-            <li>
-              <button
-                type="button"
-                onClick={() => this.handleButtonClick('good')}
-              >
-                Good
-              </button>
-            </li>
-            <li>
-              <button
-                type="button"
-                onClick={() => this.handleButtonClick('neutral')}
-              >
-                Neutral
-              </button>
-            </li>
-            <li>
-              <button
-                type="button"
-                onClick={() => this.handleButtonClick('bad')}
-              >
-                Bad
-              </button>
-            </li>
-          </ul>
-        </div> */}
-
-        <div>
-          <h2>Statistics</h2>
-          <ul>
-            <li>good:{good}</li>
-            <li>Neutral:{neutral}</li>
-            <li>Bad:{bad}</li>
-            <li>Total:{total}</li>
-            <li>Postitve:{positivePercentage}%</li>
-          </ul>
-        </div>
-      </div>
-    );
-  }
-}
+Statistics.propTypes = {
+  good: PropTypes.number.isRequired,
+  neutral: PropTypes.number.isRequired,
+  bad: PropTypes.number.isRequired,
+  total: PropTypes.number.isRequired,
+  positivePercentage: PropTypes.number.isRequired,
+};
 
 export default Statistics;
