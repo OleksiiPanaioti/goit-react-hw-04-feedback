@@ -1,5 +1,3 @@
-// import React, { Component } from 'react';
-
 import Statistics from './statistics/Statistics';
 import FeedbackOptions from './buttons/FeedbackOptions';
 import Section from './section/Section';
